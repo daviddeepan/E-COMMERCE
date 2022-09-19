@@ -61,7 +61,7 @@ def registerUser(request):
             email = data['email'],
             password = make_password(data['password'])
         )
-        serializers = UserSerializer(users, many =False)
+        serializers = UserSerializersWithToken(users, many =False)
         return Response(serializers.data)
     except:
         message = { 'detail' : 'User with this e-mail already exists.'}
